@@ -5,10 +5,11 @@ using UnityEngine;
 public class Hacker : MonoBehaviour {
 	//Constants
 	private const string mainMenu = @"Welcome to D@rkn3t
-		
-Press 1 for Easy challenge
-Press 2 for Medium challenge
-Press 3 for H@rd challenge
+Where you want to go?
+
+Press 1 for Library
+Press 2 for Militatry base
+Press 3 for Microsoft
 		
 Enter your selection:";
 
@@ -32,13 +33,11 @@ O|===|* >________________>
   |   _ |
   |_____|
  /_/_|_\_\----.
-/_/__|__\_\   )
-             (
              []";
 
 	//Game configuration
-	string[] level1Password= {"test", "easy", "tool", "font", "books", "password"};
-	string[] level2Password= {"desert", "challenge", "ensure", "enforce", "problem", "occupated"};
+	string[] level1Password= {"Shelf", "Library", "Catalog", "font", "books", "password"};
+	string[] level2Password= {"mercenary", "helicopter", "ammunitions", "reenforce", "occupation", "conflict"};
 	string[] level3Password= {"h@rD", "p@sSw0rD", "g0v3rm3nt", "4giv3", "b00k$", "l3tt3r"};
 
 	//Game State
@@ -65,7 +64,7 @@ O|===|* >________________>
 
 	void OnUserInput(string input)
 	{
-		if(input == "menu")
+		if(input == "menu" || input == "exit" || input == "quit")
 		{
 			ShowMainMenu();
 		}
@@ -97,7 +96,7 @@ O|===|* >________________>
 				password = level3Password[Random.Range(0,level3Password.Length)];
 				break;
 			default:
-				Terminal.WriteLine("Please select valid level");
+				Terminal.WriteLine("Error: invalid command");
 				break;		
 		}
 
@@ -145,15 +144,18 @@ O|===|* >________________>
 		switch(level)
 		{
 			case 1:
-				Terminal.WriteLine("Level 1 complete try nexone");	
+				Terminal.WriteLine("Grtz! You steal a book");	
+				Terminal.WriteLine("Type menu to select another place");
 				Terminal.WriteLine(book);	
 				break;
 			case 2:
-				Terminal.WriteLine("Level 2 complete try nexone");		
+				Terminal.WriteLine("Grtz! You steal a weapon");
+				Terminal.WriteLine("Type menu to select another place");		
 				Terminal.WriteLine(sword);
 				break;
 			case 3:
-				Terminal.WriteLine("Level 3 complete");		
+				Terminal.WriteLine("Grtz! you steal pc");
+				Terminal.WriteLine("Type menu to select another place");		
 				Terminal.WriteLine(pc);
 				break;
 		}
